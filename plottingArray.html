@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>plotting routes</title>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        var myRouter = {
+            map_: null,
+            directionsHelper_: null,
+
+            stores: [
+                {name: "A1", location: new google.maps.LatLng(24.85146, 66.99870)},
+                {name: "A2", location: new google.maps.LatLng(24.823452099999997, 67.0405133)},
+                {name: "A2", location: new google.maps.LatLng(24.82123, 67.01816)}
+            ],
+
+            calcRoute: function() {
+
+                var waypts = [];
+
+                for (var i in this.stores) {
+                    waypts.push({
+                        location: this.stores[i].location,
+                        stopover:true
+                    });
+                }
+                var request = {
+                    origin: new google.maps.LatLng(24.81720, 67.04092),
+                    destination: new google.maps.LatLng(24.81486, 67.08323),
+                    waypoints: waypts,
+                    optimizeWaypoints: true,
+                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                };
+
+                var _SELF = this;
+                this.directionsHelper_.route(request, function(response, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        _SELF.directionsDisplay_.setDirections(response);
+                        return;
+                    }
+                    console.log('Directions Status: ' + status);
+                });
+            },
+
+            init: function(mapid) {
+
+                this.directionsHelper_ = new google.maps.DirectionsService();
+                this.directionsDisplay_ = new google.maps.DirectionsRenderer();
+
+                var center = new google.maps.LatLng(50.82788, 3.26499);
+                var myOptions = {
+                    zoom:7,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    center: center
+                };
+                this.map_ = new google.maps.Map(document.getElementById(mapid), myOptions);
+                this.directionsDisplay_.setMap(this.map_);
+
+                this.calcRoute();
+            }
+        };
+
+        $(document).ready(function() {
+            myRouter.init('map');
+        });
+
+    </script>
+    <style type="text/css">
+        #map {
+            height: 500px;
+            width: 600px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+</body>
+</html>

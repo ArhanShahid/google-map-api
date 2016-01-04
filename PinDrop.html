@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        function initializeAddressMap1() {
+
+            var address = null;
+
+            var mapProp = {
+                center: new google.maps.LatLng(51.508742, -0.120850),
+                zoom: 3,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var addressMap1 = new google.maps.Map(document.getElementById("addressMap1"), mapProp);
+            console.log("addressMap1");
+
+            google.maps.event.addListener(addressMap1, 'click', function (event) {
+
+                var  marker = new google.maps.Marker({ position: event.latLng, map: addressMap1 });
+
+                if(address == null){
+                    address = marker;
+                    var lat = address.position.lat();
+                    var lng = address.position.lng();
+                    console.log("lat : " +lat + " lng : "+ lng);
+                }else {
+                    address.setMap(null);
+                    address = null;
+                    address = marker;
+                    var lat = address.position.lat();
+                    var lng = address.position.lng();
+                    console.log("lat : " +lat + " lng : "+ lng);
+                }
+            });
+
+        }
+        google.maps.event.addDomListener(window, 'load', initializeAddressMap1);
+
+        function initializeAddressMap2() {
+
+            var address = null;
+            var mapProp = {
+                center: new google.maps.LatLng(51.508742, -0.120850),
+                zoom: 3,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var addressMap2 = new google.maps.Map(document.getElementById("addressMap2"), mapProp);
+
+            google.maps.event.addListener(addressMap2, 'click', function (event) {
+                console.log("addressMap2");
+                var  marker = new google.maps.Marker({ position: event.latLng, map: addressMap2 });
+                if(address == null){
+                    address = marker;
+                    var lat = address.position.lat();
+                    var lng = address.position.lng();
+                    console.log("lat : " +lat + " lng : "+ lng);
+                }else {
+                    address.setMap(null);
+                    address = null;
+                    address = marker;
+                    var lat = address.position.lat();
+                    var lng = address.position.lng();
+                    console.log("lat : " +lat + " lng : "+ lng);
+                }
+            });
+
+        }
+        google.maps.event.addDomListener(window, 'load', initializeAddressMap2);
+    </script>
+</head>
+
+<body>
+<div id="addressMap1" style="width:300px;height:300px;"></div>
+<div id="addressMap2" style="width:300px;height:300px;"></div>
+
+</body>
+
+</html>

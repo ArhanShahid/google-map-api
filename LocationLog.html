@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Using HTML</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            height: 100%;
+        }
+    </style>
+<body>
+
+<p id="demo">See Current GeoLocation</p>
+<form>
+    <input type="button" value="Start Count" onClick="startCount()">
+    <input type="button" value="Quiz Timer" id="timer">
+    <input type="button" value="Stop Count" onClick="getCurrentLoc()">
+</form>
+
+<div id="mapholder"></div>
+
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script>
+
+    var x = document.getElementById("demo");
+    var Location = [];
+
+
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        x.innerHTML = "Latitude: " + lat +
+        "<br>Longitude: " + lon;
+        latlon = new google.maps.LatLng(lat, lon);
+        mapholder = document.getElementById('mapholder');
+        mapholder.style.height = '90%';
+        mapholder.style.width = '100%';
+
+
+
+        Location.push({
+            "date" : new Date(),
+            "latitude" : lat,
+            "longitude" : lon
+        });
+
+
+        for(var i = 0; i<Location.length; i++){
+            console.log(Location[i]);
+
+        }
+        console.log(Location);
+
+        var myOptions = {
+            center:latlon,zoom:14,
+            mapTypeId:google.maps.MapTypeId.ROADMAP,
+            mapTypeControl:false,
+            navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+        };
+
+        var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+        var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
+        startCount();
+    }
+
+    var s;
+    var m;
+    var q;
+    var lat,lon, latlon;
+
+
+    function startCount(){
+        s = 5;
+        m = 0;
+        console.log("value is executed");
+        quizCount();
+    }
+
+    function quizCount()
+    {
+        document.getElementById('timer').value=m+":"+s+" remaining";
+        s = s - 1;
+        q = setTimeout("quizCount()", 1000);
+        if ( s <1)
+        {
+            m=m-1;
+            s=5;
+        }
+
+        if (m<0)
+        {
+            getCurrentLoc();
+        }
+    }
+
+    function getCurrentLoc()
+    {
+        clearTimeout(q) ;
+        document.getElementById('timer').value="Your Time Was Finished";
+        getLocation();
+    }
+
+
+
+
+    function showError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation.";
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable.";
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out.";
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred.";
+                break;
+        }
+    }
+
+    //window.onload =getLocation() ;
+</script>
+
+</body>
+</html>
