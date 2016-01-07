@@ -7,14 +7,19 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
     <script type="text/javascript">
 
+
         var myRouter = {
             map_: null,
             directionsHelper_: null,
 
             stores: [
-                {name: "A1", location: new google.maps.LatLng(24.85146, 66.99870)},
-                {name: "A2", location: new google.maps.LatLng(24.823452099999997, 67.0405133)},
-                {name: "A2", location: new google.maps.LatLng(24.82123, 67.01816)}
+                {name: "P1", location: new google.maps.LatLng(24.886747933454497, 67.13865280151367)},
+                {name: "P2", location: new google.maps.LatLng(24.887059375335962, 67.1290397644043)},
+                {name: "P3", location: new google.maps.LatLng(24.882543391192204,  67.11376190185547)},
+                {name: "P4", location: new google.maps.LatLng(24.874445351033874,  67.09659576416016)},
+                {name: "P5", location: new google.maps.LatLng(24.86634678017567,  67.08337783813477)},
+                {name: "P6", location: new google.maps.LatLng(24.858714949016232,  67.05780029296875)},
+                {name: "P7", location: new google.maps.LatLng(24.854197929104103,  67.03702926635742)}
             ],
 
             calcRoute: function() {
@@ -27,16 +32,28 @@
                         stopover:true
                     });
                 }
+
+                console.log("waypts");
+                console.log(waypts);
+
                 var request = {
-                    origin: new google.maps.LatLng(24.81720, 67.04092),
-                    destination: new google.maps.LatLng(24.81486, 67.08323),
+                    origin: new google.maps.LatLng(24.886747933454497, 67.14895248413086),
+                    destination: new google.maps.LatLng(24.846253804304137, 67.02518463134766),
                     waypoints: waypts,
                     optimizeWaypoints: true,
                     travelMode: google.maps.DirectionsTravelMode.DRIVING
                 };
 
+                console.log("request");
+                console.log(request);
+
                 var _SELF = this;
                 this.directionsHelper_.route(request, function(response, status) {
+
+                    console.log('Directions Status: ' + status);
+                    console.log('Directions response:');
+                    console.log(response);
+
                     if (status == google.maps.DirectionsStatus.OK) {
                         _SELF.directionsDisplay_.setDirections(response);
                         return;

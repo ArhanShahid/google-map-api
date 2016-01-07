@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Map Plot</title>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <style type="text/css">
+        #map {
+            height: 500px;
+            width: 600px;
+            border: 1px solid #000;
+        }
+    </style>
+    <script>
+
+        var latlong = [
+            {"lat" : 24.886747933454497, "lng" : 67.14895248413086},
+            {"lat" : 24.886747933454497, "lng" : 67.13865280151367},
+            {"lat" : 24.887059375335962, "lng" : 67.1290397644043},
+            {"lat" : 24.882543391192204, "lng" : 67.11376190185547},
+            {"lat" : 24.874445351033874, "lng" : 67.09659576416016},
+            {"lat" : 24.86634678017567, "lng" : 67.08337783813477},
+            {"lat" : 24.858714949016232, "lng" : 67.05780029296875},
+            {"lat" : 24.854197929104103, "lng" : 67.03702926635742},
+            {"lat" : 24.846253804304137, "lng" : 67.02518463134766}
+
+        ];
+
+        var map = null;
+        var directionsHelper = null;
+        var directionsDisplay = null;
+        var plotData = null;
+
+        var plotDataFilter = function (arr){
+            var source = arr[0];
+            var destination = arr[arr.length-1];
+            var path = [];
+            for(var i = 0; i < (arr.length - 2); i++){
+                path.push(arr[i + 1]);
+            }
+            return {
+                "source":source,
+                "destination":destination,
+                "path":path
+            }
+        };
+        var plotRoute = function(){
+            var googleMapsLatLng = [];
+            function processArrayElements(element, index, array) {
+                googleMapsLatLng.push({
+                    location: new google.maps.LatLng(Number(element.lat),Number(element.lng)),
+                    stopover:true
+                });
+            }
+            plotData.path.forEach(processArrayElements);
+
+            console.log("googleMapsLatLng");
+            console.log(googleMapsLatLng);
+
+            var request = {
+                origin: new google.maps.LatLng(Number(plotData.source.lat),Number(plotData.source.lng)),
+                destination: new google.maps.LatLng(Number(plotData.destination.lat), Number(plotData.destination.lat)),
+                waypoints: googleMapsLatLng,
+                optimizeWaypoints: true,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            };
+
+            console.log("request");
+            console.log(request);
+
+            directionsHelper.route(request, function(response, status) {
+
+                console.log('Directions Status: ' + status);
+                console.log('Directions response:');
+                console.log(response);
+
+
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    return;
+                }
+
+            });
+
+
+        };
+
+
+        var initializeMap = function (mapId){
+            plotData = plotDataFilter(latlong);
+
+            console.log("mapId",mapId);
+
+            console.log("source",plotData.source);
+            console.log("destination",plotData.destination);
+
+            directionsHelper = new google.maps.DirectionsService();
+            directionsDisplay = new google.maps.DirectionsRenderer();
+
+            var center = new google.maps.LatLng(plotData.source.lat, plotData.source.lng);
+            var mapOptions = {
+                zoom:7,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                center: center
+            };
+
+            map = new google.maps.Map(document.getElementById(mapId), mapOptions);
+            directionsDisplay.setMap(map);
+            plotRoute();
+        };
+
+        $(document).ready(function() {
+            initializeMap('map')
+        });
+
+
+
+    </script>
+</head>
+<body>
+<div id="map"></div>
+</body>
+</html>
