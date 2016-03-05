@@ -8,6 +8,20 @@
     <script type="text/javascript">
 
 
+		var latlong = [
+							{"lat" : 24.886747933454497, "lng" : 67.14895248413086},
+							{"lat" : 24.886747933454497, "lng" : 67.13865280151367},
+							{"lat" : 24.887059375335962, "lng" : 67.1290397644043},
+							{"lat" : 24.882543391192204, "lng" : 67.11376190185547},
+							{"lat" : 24.874445351033874, "lng" : 67.09659576416016},
+							{"lat" : 24.86634678017567, "lng" : 67.08337783813477},
+							{"lat" : 24.858714949016232, "lng" : 67.05780029296875},
+							{"lat" : 24.854197929104103, "lng" : 67.03702926635742},
+							{"lat" : 24.846253804304137, "lng" : 67.02518463134766},
+
+		]
+			
+	
         var myRouter = {
             map_: null,
             directionsHelper_: null,
@@ -36,11 +50,19 @@
                 console.log("waypts");
                 console.log(waypts);
 
+				var position= [];
+				for(var i  = 0 ; i < latlng.length ; i++)
+				{
+					position.push({
+					lat : latlng[i].lat,
+					lng : latlng[i].lng
+					})
+				}
                 var request = {
-                    origin: new google.maps.LatLng(24.886747933454497, 67.14895248413086),
-                    destination: new google.maps.LatLng(24.846253804304137, 67.02518463134766),
-                    waypoints: waypts,
-                    optimizeWaypoints: true,
+                    origin: position[0],
+                    destination: position[1],
+                    
+                   
                     travelMode: google.maps.DirectionsTravelMode.DRIVING
                 };
 
