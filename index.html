@@ -16,7 +16,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCESi2A6g5sJbUF33BG7yhWEZFdgk97Cx4&libraries=places"  type="text/javascript"  ></script>
-    <script src="scripts/app.js"></script>
+    <script src="scripts/autocomplete.js"></script>
+    <script src="scripts/currentGeoLocation.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -30,12 +31,25 @@
 </nav>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6 box">
-           <h3>Google Places Autocomplete</h3>
+        <div class="col-md-6 box-1 border-bottom">
+           <h3 class="margin-top-25">Google Places Autocomplete</h3>
+            <p id="googlePlaceAutoCompleteText"></p>
+            <br>
         </div>
-        <div class="col-md-6 box">
+        <div class="col-md-6 box-1 border-bottom">
             <br>
             <input id="google_places_ac" name="google_places_ac" type="text" placeholder="Enter Location..."  class="form-control"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 box-2 border-bottom">
+            <h3 class="margin-top-25">Current GeoLocation</h3>
+            <input id="getCurrentLocation" type="button" class="btn btn-default" value="Current Location">
+            <p class="margin-top-25" id="currentGeoLocationText">See Current GeoLocation</p>
+            <br>
+        </div>
+        <div class="col-md-6 box-2 border-bottom">
+            <div class="margin-top-15" id="currentGeoLocationMapHolder"></div>
         </div>
     </div>
 </div>
