@@ -1,0 +1,17 @@
+* {
+    /*margin: 0;*/
+    /*padding: 0;*/
+}
+.navbar{
+    border-radius: 0;
+    margin-bottom: 0;
+}
+.border{
+    border: 1px solid rgba(0,0,0,.2);
+}
+.heading{
+    padding: 0 20px;
+}
+.box{
+    height: 80px;
+}
