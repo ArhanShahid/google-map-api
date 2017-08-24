@@ -23,7 +23,8 @@ $(function () {
         mapholder.style.width = '100%';
 
         var myOptions = {
-            center:latlon,zoom:14,
+            center:latlon,
+            zoom:14,
             mapTypeId:google.maps.MapTypeId.ROADMAP,
             mapTypeControl:false,
             navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
