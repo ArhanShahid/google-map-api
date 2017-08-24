@@ -3,7 +3,7 @@ $(function () {
     function initializePlotMarker() {
         var plotMarkerOptions = {
             center:  new google.maps.LatLng(24.8614622, 67.00993879999999),
-            zoom: 14,
+            zoom: 10,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL}
         };

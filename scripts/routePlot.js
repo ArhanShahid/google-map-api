@@ -32,13 +32,11 @@ $(function () {
             center: new google.maps.LatLng(24.8614622, 67.00993879999999)
         });
 
-
         var markers = [
-            {lat: 24.886747933454497, lng: 67.13865280151367},
-            {lat: 24.887059375335962, lng: 67.1290397644043},
-            {lat: 24.874445351033874, lng: 67.09659576416016}
+             {"lat": 24.886747933454497, "lng": 67.13865280151367},
+             {"lat": 24.887059375335962, "lng": 67.1290397644043},
+             {"lat": 24.874445351033874, "lng": 67.09659576416016}
         ];
-
         directionsDisplay.setMap(routePlotMap);
         calculateAndDisplayRoute(directionsService, directionsDisplay, markers);
     }
