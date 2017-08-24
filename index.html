@@ -19,6 +19,7 @@
     <script src="scripts/autocomplete.js"></script>
     <script src="scripts/currentGeoLocation.js"></script>
     <script src="scripts/markerIconAndMapBubble.js"></script>
+    <script src="scripts/plotMarker.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -40,6 +41,20 @@
         <div class="col-md-6 box-1 border-bottom">
             <br>
             <input id="google_places_ac" name="google_places_ac" type="text" placeholder="Enter Location..."  class="form-control"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 box-2 border-bottom">
+            <h3 class="margin-top-25">Plot Marker</h3>
+            <input type="number" placeholder="Enter Latitude" id="plotMarkerLatitude" class="form-control">
+            <br>
+            <input type="number" placeholder="Enter Longitude" id="plotMarkerLongitude" class="form-control">
+            <br>
+            <input id="plotMarker" type="button" class="btn btn-default" value="Plot Marker">
+
+        </div>
+        <div class="col-md-6 box-2 border-bottom">
+            <div class="margin-top-15 map-size" id="plotMarkerMapHolder"></div>
         </div>
     </div>
     <div class="row">

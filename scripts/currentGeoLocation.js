@@ -16,14 +16,14 @@ $(function () {
         currentGeoLocationText.text("Latitude: " + lat + " Longitude: " + lon);
         latlon = new google.maps.LatLng(lat, lon);
 
-        var myOptions = {
+        var currentGeoLocationOptions = {
             center:latlon,
             zoom:14,
             mapTypeId:google.maps.MapTypeId.ROADMAP,
             navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
         };
 
-        var map = new google.maps.Map(document.getElementById("currentGeoLocationMapHolder"), myOptions);
+        var map = new google.maps.Map(document.getElementById("currentGeoLocationMapHolder"), currentGeoLocationOptions);
         var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
     }
 

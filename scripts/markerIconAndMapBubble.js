@@ -19,13 +19,13 @@ $(function () {
             '</div>';
 
         var infoWindow = new google.maps.InfoWindow({ content: bubbleString });
-        var myOptions = {
+        var markerIconAndMapBubbleOptions = {
             center: markerIconAndMapBubbleLatLong,
             zoom: 14,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL}
         };
-        var markerIconAndMapBubbleMap = new google.maps.Map(document.getElementById("markerIconAndMapBubbleMapHolder"), myOptions);
+        var markerIconAndMapBubbleMap = new google.maps.Map(document.getElementById("markerIconAndMapBubbleMapHolder"), markerIconAndMapBubbleOptions);
         var marker = new google.maps.Marker({
             position: markerIconAndMapBubbleLatLong,
             map: markerIconAndMapBubbleMap,
