@@ -2,14 +2,10 @@
 <html>
 <head>
     <script
-            src="http://maps.googleapis.com/maps/api/js">
+            src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCESi2A6g5sJbUF33BG7yhWEZFdgk97Cx4&sensor=true">
     </script>
 
     <script>
-
-
-
-
         var latlong = [
             {"lat" : 24.886747933454497, "lng" : 67.14895248413086},
             {"lat" : 24.886747933454497, "lng" : 67.13865280151367},
@@ -23,9 +19,7 @@
 
         ];
 
-
         var plotData = null;
-
         var plotDataFilter = function (arr){
             var source = arr[0];
             var destination = arr[arr.length-1];
