@@ -2,28 +2,41 @@
     margin: 0;
     padding: 0;
 }
-.margin-top-15{
+
+.margin-top-15 {
     margin-top: 15px;
 }
-.margin-top-25{
+
+.margin-top-25 {
     margin-top: 25px;
 }
-.navbar{
+
+.navbar {
     border-radius: 0;
     margin-bottom: 0;
 }
-.border{
-    border: 1px solid rgba(0,0,0,.2);
+
+.border {
+    border: 1px solid rgba(0, 0, 0, .2);
 }
-.border-bottom{
-    border-bottom: 1px solid rgba(0,0,0,.2);
+
+.border-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
-.heading{
+
+.heading {
     padding: 0 20px;
 }
-.box-1{
+
+.box-1 {
     height: 100px;
 }
-.box-2{
+
+.box-2 {
     height: 300px;
+}
+
+.map-size {
+    width: 100%;
+    height: 90%;
 }
