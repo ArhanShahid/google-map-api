@@ -37,7 +37,7 @@ $(function () {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-        var map = new google.maps.Map(document.getElementById("polyLineMapHolder"), polyLineOptions);
+        var polyLineMap = new google.maps.Map(document.getElementById("polyLineMapHolder"), polyLineOptions);
         var flightPath = new google.maps.Polyline({
             path:googleMapsLatLng,
             strokeColor:"#FF0000",
@@ -45,7 +45,7 @@ $(function () {
             strokeWeight:2
         });
 
-        flightPath.setMap(map);
+        flightPath.setMap(polyLineMap);
     }
 
     google.maps.event.addDomListener(window, 'load', initializePolyLine);

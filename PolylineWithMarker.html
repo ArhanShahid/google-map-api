@@ -6,7 +6,7 @@
     </script>
 
     <script>
-        var latlong = [
+        var latLong = [
             {"lat": 24.886747933454497, "lng": 67.14895248413086},
             {"lat": 24.886747933454497, "lng": 67.13865280151367},
             {"lat": 24.887059375335962, "lng": 67.1290397644043},
@@ -16,20 +16,19 @@
             {"lat": 24.858714949016232, "lng": 67.05780029296875},
             {"lat": 24.854197929104103, "lng": 67.03702926635742},
             {"lat": 24.846253804304137, "lng": 67.02518463134766}
-
         ];
         var plotData = null;
-        var plotDataFilter = function (arr) {
-            var source = arr[0];
-            var destination = arr[arr.length - 1];
+        var plotDataFilter = function (data){
+            var source = data[0];
+            var destination = data[data.length-1];
             var path = [];
-            for (var i = 0; i < (arr.length - 2); i++) {
-                path.push(arr[i + 1]);
+            for(var i = 0; i < (data.length - 2); i++){
+                path.push(data[i + 1]);
             }
             return {
-                "source": source,
-                "destination": destination,
-                "path": path
+                "source":source,
+                "destination":destination,
+                "path":path
             }
         };
 
