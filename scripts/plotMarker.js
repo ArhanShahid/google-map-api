@@ -1,7 +1,6 @@
 $(function () {
     var plotMarkerMap;
     function initializePlotMarker() {
-        console.log('initializePlotMarker')
         var plotMarkerOptions = {
             center:  new google.maps.LatLng(24.8614622, 67.00993879999999),
             zoom: 14,
@@ -9,7 +8,6 @@ $(function () {
             navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL}
         };
          plotMarkerMap = new google.maps.Map(document.getElementById("plotMarkerMapHolder"), plotMarkerOptions);
-
     }
     google.maps.event.addDomListener(window, 'load', initializePlotMarker);
 
