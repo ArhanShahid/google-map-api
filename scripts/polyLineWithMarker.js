@@ -60,5 +60,6 @@ $(function () {
         flightPath.setMap(polyLineWithMarkerMap);
     }
 
-    google.maps.event.addDomListener(window, 'load', initializePolyLineWithMaker);
+    //google.maps.event.addDomListener(window, 'load', initializePolyLineWithMaker);
+    initializePolyLineWithMaker();
 });

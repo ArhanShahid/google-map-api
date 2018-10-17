@@ -41,6 +41,7 @@ $(function () {
         calculateAndDisplayRoute(directionsService, directionsDisplay, markers);
     }
 
-    google.maps.event.addDomListener(window, 'load', initializeRotePlot);
+    //google.maps.event.addDomListener(window, 'load', initializeRotePlot);
+    initializeRotePlot();
 
 });

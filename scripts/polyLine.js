@@ -48,5 +48,6 @@ $(function () {
         flightPath.setMap(polyLineMap);
     }
 
-    google.maps.event.addDomListener(window, 'load', initializePolyLine);
+    //google.maps.event.addDomListener(window, 'load', initializePolyLine);
+    initializePolyLine();
 });

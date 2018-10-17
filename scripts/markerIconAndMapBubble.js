@@ -38,6 +38,7 @@ $(function () {
 
     }
 
-    google.maps.event.addDomListener(window, 'load', initializeMarkerIconAndMapBubble);
+    //google.maps.event.addDomListener(window, 'load', initializeMarkerIconAndMapBubble);
+    initializeMarkerIconAndMapBubble();
 
 });

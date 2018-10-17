@@ -9,9 +9,11 @@ $(function () {
         };
          plotMarkerMap = new google.maps.Map(document.getElementById("plotMarkerMapHolder"), plotMarkerOptions);
     }
-    google.maps.event.addDomListener(window, 'load', initializePlotMarker);
+    //google.maps.event.addDomListener(window, 'load', initializePlotMarker);
+    initializePlotMarker();
 
     $('#plotMarker').on('click',function () {
+        console.log(google)
         const plotMarkerLatLong = new google.maps.LatLng(
             Number($("#plotMarkerLatitude").val()),
             Number($("#plotMarkerLongitude").val()));

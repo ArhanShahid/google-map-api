@@ -22,5 +22,6 @@ $(function () {
             }
         });
     }
-    google.maps.event.addDomListener(window, 'load', initializePinDrop);
+    //google.maps.event.addDomListener(window, 'load', initializePinDrop);
+    initializePinDrop();
 });
