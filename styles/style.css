@@ -40,3 +40,20 @@
     width: 100%;
     height: 90%;
 }
+
+#map-canvas {
+    height: 500px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* html,
+body {
+  height: 100%;
+} */
+
+#map {
+    height: 500px;
+  width: 100%;
+}
