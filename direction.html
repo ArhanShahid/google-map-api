@@ -29,12 +29,13 @@
             directionsService.route(request, function (response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
-                    console.log(response)
                     var myRoute = response.routes[0];
                     var txtDir = '';
-                    for (var i = 0; i < myRoute.legs[0].steps.length; i++) {
-                        txtDir += myRoute.legs[0].steps[i].instructions + "<br />";
-                    }
+                    txtDir += JSON.stringify(myRoute.legs[0].distance) + "<br />";
+                    txtDir += JSON.stringify(myRoute.legs[0].duration) + "<br />";
+                    // for (var i = 0; i < myRoute.legs[0].steps.length; i++) {
+                    //     txtDir += myRoute.legs[0].steps[i].instructions + "<br />";
+                    // }
                     document.getElementById('directions').innerHTML = txtDir;
                 }
             });
