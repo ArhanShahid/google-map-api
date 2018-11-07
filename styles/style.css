@@ -41,6 +41,10 @@
     height: 90%;
 }
 
+.map-size-d{
+    height: 400px;
+}
+
 #map-canvas {
     height: 500px;
     width: 100%;

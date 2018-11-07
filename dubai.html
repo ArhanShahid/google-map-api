@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -15,12 +16,25 @@
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCESi2A6g5sJbUF33BG7yhWEZFdgk97Cx4&libraries=places"  type="text/javascript" ></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCESi2A6g5sJbUF33BG7yhWEZFdgk97Cx4&libraries=places"
+        type="text/javascript"></script>
     <script src="scripts/dubai.js"></script>
 </head>
+
 <body>
 
-<div class="container-fluid">
-</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 border-bottom">
+                <div class="margin-top-15 map-size-d" id="plotMarkerMapHolder"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input id="plotPath" type="button" class="btn btn-default" value="Path">
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

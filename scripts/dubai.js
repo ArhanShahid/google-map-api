@@ -30,4 +30,42 @@ const path = [
     { lat: 25.163453748754122, lng: 55.32916176746096 },
     { lat: 25.171789238404468, lng: 55.32287021218599 },
     { lat: 25.180333729378265, lng: 55.31531711160005 }
-]
+];
+
+
+$(function () {
+    var plotMarkerMap;
+    function initializePlotMarker() {
+        var plotMarkerOptions = {
+            center: new google.maps.LatLng(25.2048493, 55.270782800000006),
+            zoom: 10,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
+        };
+        plotMarkerMap = new google.maps.Map(document.getElementById("plotMarkerMapHolder"), plotMarkerOptions);
+    }
+    //google.maps.event.addDomListener(window, 'load', initializePlotMarker);
+    initializePlotMarker();
+
+    //var googleMapsLatLng = markers.map((v) => new google.maps.LatLng(v.lat, v.lng));
+
+
+
+    $('#plotPath').on('click', () => {
+
+        var marker = markers.map(v => {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(v.lat, v.lng),
+                map: plotMarkerMap
+            });
+        });
+
+        // const plotMarkerLatLong = new google.maps.LatLng(
+        //     Number(25.180333729378265),
+        //     Number(55.31531711160005));
+        // var marker = new google.maps.Marker({
+        //     position: plotMarkerLatLong,
+        //     map: plotMarkerMap
+        // });
+    });
+});
