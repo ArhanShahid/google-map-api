@@ -34,27 +34,47 @@ const path = [
 
 
 $(function () {
-    var plotMarkerMap;
+    var map;
     function initializePlotMarker() {
-        var plotMarkerOptions = {
+        const options = {
             center: new google.maps.LatLng(25.2048493, 55.270782800000006),
             zoom: 10,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
         };
-        plotMarkerMap = new google.maps.Map(document.getElementById("plotMarkerMapHolder"), plotMarkerOptions);
+        map = new google.maps.Map(document.getElementById("plotMarkerMapHolder"), options);
     }
     //google.maps.event.addDomListener(window, 'load', initializePlotMarker);
     initializePlotMarker();
 
-    $('#plotPath').on('click', () => {
-
+    $('#plotMarker').on('click', () => {
         var marker = markers.map(v => {
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(v.lat, v.lng),
-                map: plotMarkerMap
+                map: map
             });
         });
+    });
 
+    var icon = new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/micons/blue.png");
+
+
+    function moveMarker(map, marker, lat, lon) {
+        marker.setPosition(new google.maps.LatLng(lat, lon));
+        map.panTo(new google.maps.LatLng(lat, lon));
+    }
+
+    function autoRefresh() {
+        var i, marker;
+        marker = new google.maps.Marker({ map: map, icon: icon });
+        for (i = 0; i < path.length; i++) {
+            setTimeout((path) => {
+                moveMarker(map, marker, path.lat, path.lng);
+            }, 500 * i, path[i]);
+        }
+    }
+
+    $('#plotPath').on('click', () => {
+        autoRefresh();
     });
 });
