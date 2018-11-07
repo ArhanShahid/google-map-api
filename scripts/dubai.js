@@ -47,10 +47,6 @@ $(function () {
     //google.maps.event.addDomListener(window, 'load', initializePlotMarker);
     initializePlotMarker();
 
-    //var googleMapsLatLng = markers.map((v) => new google.maps.LatLng(v.lat, v.lng));
-
-
-
     $('#plotPath').on('click', () => {
 
         var marker = markers.map(v => {
@@ -60,12 +56,5 @@ $(function () {
             });
         });
 
-        // const plotMarkerLatLong = new google.maps.LatLng(
-        //     Number(25.180333729378265),
-        //     Number(55.31531711160005));
-        // var marker = new google.maps.Marker({
-        //     position: plotMarkerLatLong,
-        //     map: plotMarkerMap
-        // });
     });
 });
