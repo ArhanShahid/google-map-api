@@ -1,8 +1,8 @@
 $(function () {
 
-    var currentGeoLocationText = $("#currentGeoLocationText");
+    let currentGeoLocationText = $("#currentGeoLocationText");
 
-    function getLocation() {
+    const getLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition, showError);
         } else {
@@ -10,25 +10,31 @@ $(function () {
         }
     }
 
-    function showPosition(position) {
-        lat = position.coords.latitude;
-        lon = position.coords.longitude;
+    const showPosition = (position) => {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
         currentGeoLocationText.text("Latitude: " + lat + " Longitude: " + lon);
-        latlon = new google.maps.LatLng(lat, lon);
+        let latlon = new google.maps.LatLng(lat, lon);
 
-        var currentGeoLocationOptions = {
-            center:latlon,
-            zoom:14,
-            mapTypeId:google.maps.MapTypeId.ROADMAP,
-            navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+        const currentGeoLocationOptions = {
+            center: latlon,
+            zoom: 14,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.SMALL
+            }
         };
 
-        var map = new google.maps.Map(document.getElementById("currentGeoLocationMapHolder"), currentGeoLocationOptions);
-        var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
+        let map = new google.maps.Map(document.getElementById("currentGeoLocationMapHolder"), currentGeoLocationOptions);
+        new google.maps.Marker({
+            position: latlon,
+            map: map,
+            title: "You are here!"
+        });
     }
 
-    function showError(error) {
-        switch(error.code) {
+    const showError = (error) => {
+        switch (error.code) {
             case error.PERMISSION_DENIED:
                 currentGeoLocationText.text("User denied the request for Geolocation.");
                 break;
@@ -44,7 +50,7 @@ $(function () {
         }
     }
 
-    $('#getCurrentLocation').on('click',function () {
+    $('#getCurrentLocation').on('click', () => {
         getLocation();
     });
 });
