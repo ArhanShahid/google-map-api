@@ -27,16 +27,14 @@
     <script src="scripts/marker-plot.js" type="text/javascript"></script>
     <script src="scripts/multiple-marker-plot.js" type="text/javascript"></script>
     <script src="scripts/pin-drop.js" type="text/javascript"></script>
-
-    <script src="scripts/markerIconAndMapBubble.js" type="text/javascript"></script>
-
+    <script src="scripts/marker-icon-bubble.js" type="text/javascript"></script>
     <script src="scripts/polyLine.js" type="text/javascript"></script>
-    <script src="scripts/polyLineWithMarker.js" type="text/javascript"></script>
-    <script src="scripts/markerWithAnimation.js" type="text/javascript"></script>
-
+    <script src="scripts/polyLine-marker.js" type="text/javascript"></script>
+    <script src="scripts/marker-move-animation.js" type="text/javascript"></script>
     <script src="scripts/route-plot.js" type="text/javascript"></script>
     <script src="scripts/route-plot-animation.js" type="text/javascript"></script>
     <script src="scripts/route-plot-polyline-animation.js" type="text/javascript"></script>
+    <script src="scripts/build-path-array.js" type="text/javascript"></script>
 
 </head>
 
@@ -64,17 +62,27 @@
     </nav>
 
     <div class="container-fluid">
+
         <div class="row">
-            <div class="col-md-12 box-2 border-bottom">
+            <div class="col-md-12 box-3 border-bottom">
                 <ul class="list-unstyled margin-top-25">
                     <li><a href="#autocomplete">Google Places Autocomplete</a></li>
                     <li><a href="#current-geo-location">Current Geo Location</a></li>
                     <li><a href="#marker-plot">Marker Plot</a></li>
                     <li><a href="#multiple-marker-plot">Multiple Marker Plot</a></li>
                     <li><a href="#pin-drop">Pin Drop</a></li>
+                    <li><a href="#marker-icon-bubble">Marker Icon & Bubble</a></li>
+                    <li><a href="#polyLine">PolyLine</a></li>
+                    <li><a href="#polyLine-marker">PolyLine With Marker</a></li>
+                    <li><a href="#marker-move-animation">Marker Move with Animation</a></li>
+                    <li><a href="#route-plot">Route Plot</a></li>
+                    <li><a href="#route-plot-animation">Route Plot With Animation</a></li>
+                    <li><a href="#route-plot-polyLine-animation">Route Plot With PolyLine & Animation</a></li>
+                    <li><a href="#build-path-array">Build Path Array</a></li>
                 </ul>
             </div>
         </div>
+
         <!-- Autocomplete -->
         <div class="row" id="autocomplete">
             <div class="col-md-6 box-1 border-bottom">
@@ -87,6 +95,7 @@
                 <input id="google_places_ac" name="google_places_ac" type="text" placeholder="Enter Location..." class="form-control" />
             </div>
         </div>
+
         <!-- Current GeoLocation -->
         <div class="row" id="current-geo-location">
             <div class="col-md-6 box-2 border-bottom">
@@ -99,6 +108,7 @@
                 <div class="margin-top-15 map-size" id="currentGeoLocationMapHolder"></div>
             </div>
         </div>
+
         <!-- Marker Plot -->
         <div class="row" id="marker-plot">
             <div class="col-md-6 box-2 border-bottom">
@@ -124,6 +134,7 @@
 
             </div>
         </div>
+
         <!-- Pin Drop -->
         <div class="row" id="pin-drop">
             <div class="col-md-6 box-2 border-bottom">
@@ -136,15 +147,48 @@
             </div>
         </div>
 
-        <div class="row">
+        <!-- Marker Icon & Bubble -->
+        <div class="row" id="marker-icon-bubble">
             <div class="col-md-6 box-2 border-bottom">
-                <h3 class="margin-top-25">Marker Icon & Map Bubble</h3>
+                <h3 class="margin-top-25">Marker Icon & Bubble</h3>
             </div>
             <div class="col-md-6 box-2 border-bottom">
                 <div class="margin-top-15 map-size" id="markerIconAndMapBubbleMapHolder"></div>
             </div>
         </div>
-        <div class="row">
+
+        <!-- PolyLine -->
+        <div class="row" id="polyLine">
+            <div class="col-md-6 box-2 border-bottom">
+                <h3 class="margin-top-25">PolyLine</h3>
+            </div>
+            <div class="col-md-6 box-2 border-bottom">
+                <div class="margin-top-15 map-size" id="polyLineMapHolder"></div>
+            </div>
+        </div>
+
+        <!-- PolyLine With Marker -->
+        <div class="row" id="polyLine-marker">
+            <div class="col-md-6 box-2 border-bottom">
+                <h3 class="margin-top-25">PolyLine With Marker</h3>
+            </div>
+            <div class="col-md-6 box-2 border-bottom">
+                <div class="margin-top-15 map-size" id="polyLineWithMarkerMapHolder"></div>
+            </div>
+        </div>
+
+        <!-- Marker Move with Animation -->
+        <div class="row" id="marker-move-animation">
+            <div class="col-md-6 box-2 border-bottom">
+                <h3 class="margin-top-25">Marker Move with Animation</h3>
+            </div>
+            <div class="col-md-6 box-2 border-bottom">
+                <div class="margin-top-15 map-size" id="markerAnimationMapHolder"></div>
+            </div>
+        </div>
+
+        <!-- Route Plot -->
+        <div class="row" id="route-plot">
             <div class="col-md-6 box-2 border-bottom">
                 <h3 class="margin-top-25">Route Plot</h3>
             </div>
@@ -152,7 +196,9 @@
                 <div class="margin-top-15 map-size" id="route-plot-map"></div>
             </div>
         </div>
-        <div class="row">
+
+        <!-- Route Plot With Animation -->
+        <div class="row" id="route-plot-animation">
             <div class="col-md-6 box-2 border-bottom">
                 <h3 class="margin-top-25">Route Plot With Animation</h3>
 
@@ -163,7 +209,9 @@
                 <div class="margin-top-15 map-size" id="route-plot-animation-map"></div>
             </div>
         </div>
-        <div class="row">
+
+        <!-- Route Plot With PolyLine & Animation -->
+        <div class="row" id="route-plot-polyLine-animation">
             <div class="col-md-6 box-2 border-bottom">
                 <h3 class="margin-top-25">Route Plot With PolyLine & Animation</h3>
                 <input id="route-plot-ployline-animation" type="button" class="btn btn-default" value="Start">
@@ -172,30 +220,17 @@
                 <div class="margin-top-15 map-size" id="route-plot-polyline-animation-map"></div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 box-2 border-bottom">
-                <h3 class="margin-top-25">PolyLine</h3>
+
+        <!-- Build Path Array -->
+        <div class="row" id="build-path-array">
+            <div class="col-md-12">
+                <h3 class="margin-top-25">Build Path Array</h3>
             </div>
-            <div class="col-md-6 box-2 border-bottom">
-                <div class="margin-top-15 map-size" id="polyLineMapHolder"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 box-2 border-bottom">
-                <h3 class="margin-top-25">PolyLine With Marker</h3>
-            </div>
-            <div class="col-md-6 box-2 border-bottom">
-                <div class="margin-top-15 map-size" id="polyLineWithMarkerMapHolder"></div>
+            <div class="col-md-12">
+
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 box-2 border-bottom">
-                <h3 class="margin-top-25">Marker with Animation</h3>
-            </div>
-            <div class="col-md-6 box-2 border-bottom">
-                <div class="margin-top-15 map-size" id="markerAnimationMapHolder"></div>
-            </div>
-        </div>
+
     </div>
 </body>
 
