@@ -1,4 +1,4 @@
-$(function () {
+$(() => {
 
     let currentGeoLocationText = $("#currentGeoLocationText");
 

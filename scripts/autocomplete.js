@@ -1,4 +1,4 @@
-$(function () {
+$(() => {
     const options = {
         rankBy: google.maps.places.RankBy.DISTANCE,
         types: ['geocode', 'establishment'],
