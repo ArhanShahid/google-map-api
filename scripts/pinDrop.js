@@ -9,23 +9,23 @@ $(() => {
         }
     };
 
-    const pinDropMap = new google.maps.Map(document.getElementById("pinDropMapHolder"), pinDropMapOptions);
-    
+    const pinDropMap = new google.maps.Map(document.getElementById('pinDropMapHolder'), pinDropMapOptions);
+
     let pinDropMapAddress = null;
-    
-    google.maps.event.addListener(pinDropMap, 'click', function (event) {
+
+    google.maps.event.addListener(pinDropMap, 'click', (event) => {
         let marker = new google.maps.Marker({
             position: event.latLng,
             map: pinDropMap
         });
         if (pinDropMapAddress == null) {
             pinDropMapAddress = marker;
-            $('#pinDropText').html("Latitude : " + pinDropMapAddress.position.lat() + " Longitude : " + pinDropMapAddress.position.lng());
+            $('#pinDropText').html(`Latitude : ${pinDropMapAddress.position.lat()} Longitude : ${pinDropMapAddress.position.lng()}`);
         } else {
             pinDropMapAddress.setMap(null);
             pinDropMapAddress = null;
             pinDropMapAddress = marker;
-            $('#pinDropText').html("Latitude : " + pinDropMapAddress.position.lat() + " Longitude : " + pinDropMapAddress.position.lng());
+            $('#pinDropText').html(`Latitude : ${pinDropMapAddress.position.lat()} Longitude : ${pinDropMapAddress.position.lng()}`);
         }
     });
 });

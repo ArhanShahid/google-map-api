@@ -8,10 +8,10 @@ $(() => {
 
     const autocomplete = new google.maps.places.Autocomplete($('#google_places_ac')[0], options);
     
-    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+    google.maps.event.addListener(autocomplete, 'place_changed', () => {
         const location = autocomplete.getPlace();
         if (location && location.geometry) {
-            $('#googlePlaceAutoCompleteText').html("Latitude: " + location.geometry.location.lat() + "\nLongitude: " + location.geometry.location.lng());
+            $('#googlePlaceAutoCompleteText').html(`Latitude: ${location.geometry.location.lat()} Longitude: ${location.geometry.location.lng()}`);
             console.log({
                 'Latitude:': location.geometry.location.lat(),
                 'Longitude:': location.geometry.location.lng()

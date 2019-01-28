@@ -115,21 +115,21 @@ $(() => {
                 style: google.maps.NavigationControlStyle.SMALL
             }
         };
-        map = new google.maps.Map(document.getElementById("plotMarkerMapHolder"), options);
+        map = new google.maps.Map(document.getElementById('plotMarkerMapHolder'), options);
     }
 
     initializePlotMarker();
 
-    $('#plotMarker').on('click', () => {
+    $('#plotMarker').on('click', () =>
         markers.map(v => {
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(v.lat, v.lng),
                 map: map
             });
-        });
-    });
+        })
+    );
 
-    const icon = new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/micons/blue.png");
+    const icon = new google.maps.MarkerImage('http://maps.google.com/mapfiles/ms/micons/blue.png');
 
     const moveMarker = (map, marker, lat, lon) => {
         marker.setPosition(new google.maps.LatLng(lat, lon));
