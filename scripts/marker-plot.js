@@ -9,12 +9,12 @@ $(() => {
         }
     };
     
-    const plotMarkerMap = new google.maps.Map(document.getElementById('plotMarkerMapHolder'), plotMarkerOptions);
+    const plotMarkerMap = new google.maps.Map(document.getElementById('plot-marker-map'), plotMarkerOptions);
 
-    $('#plotMarker').on('click', () => {
+    $('#plot-marker').on('click', () => {
         const plotMarkerLatLong = new google.maps.LatLng(
-            Number($('#plotMarkerLatitude').val()),
-            Number($('#plotMarkerLongitude').val()));
+            Number($('#plot-marker-latitude').val()),
+            Number($('#plot-marker-longitude').val()));
         new google.maps.Marker({
             position: plotMarkerLatLong,
             map: plotMarkerMap

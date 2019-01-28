@@ -1222,7 +1222,7 @@ $(() => {
         }
     ];
 
-    let map = new google.maps.Map(document.getElementById('routePlotWithAnimation'), {
+    let map = new google.maps.Map(document.getElementById('route-plot-polyline-animation-map'), {
         center: new google.maps.LatLng(coords[0].lat, coords[0].lng),
         zoom: 11,
         mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -1259,7 +1259,7 @@ $(() => {
         }
     }
 
-    $('#startRoutePlotWithAnimation').on('click', () => autoRefresh());
+    $('#route-plot-ployline-animation').on('click', () => autoRefresh());
 
 
 });

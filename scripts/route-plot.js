@@ -2,7 +2,7 @@ $(() => {
 
     const directionsService = new google.maps.DirectionsService;
     const directionsDisplay = new google.maps.DirectionsRenderer;
-    const routePlotMap = new google.maps.Map(document.getElementById('routePlotMapHolder'), {
+    const routePlotMap = new google.maps.Map(document.getElementById('route-plot-map'), {
         zoom: 13,
         center: new google.maps.LatLng(24.8614622, 67.00993879999999)
     });
