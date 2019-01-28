@@ -1,4 +1,5 @@
 $(() => {
+
     const pinDropMapOptions = {
         center: new google.maps.LatLng(24.8614622, 67.00993879999999),
         zoom: 14,
@@ -7,8 +8,11 @@ $(() => {
             style: google.maps.NavigationControlStyle.SMALL
         }
     };
+
     const pinDropMap = new google.maps.Map(document.getElementById("pinDropMapHolder"), pinDropMapOptions);
+    
     let pinDropMapAddress = null;
+    
     google.maps.event.addListener(pinDropMap, 'click', function (event) {
         let marker = new google.maps.Marker({
             position: event.latLng,
@@ -24,6 +28,4 @@ $(() => {
             $('#pinDropText').html("Latitude : " + pinDropMapAddress.position.lat() + " Longitude : " + pinDropMapAddress.position.lng());
         }
     });
-
-
 });

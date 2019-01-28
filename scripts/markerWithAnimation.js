@@ -1,4 +1,5 @@
 $(() => {
+
   const animatedMove = (marker, t, current, moveto) => {
 
     let deltalat = (moveto.lat() - current.lat()) / 100;
@@ -25,6 +26,7 @@ $(() => {
     zoom: 4,
     center: new google.maps.LatLng(-37.8136, 144.9631)
   });
+  
   const marker = new google.maps.Marker({
     map: map,
   });

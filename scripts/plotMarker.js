@@ -1,4 +1,5 @@
 $(() => {
+
     const plotMarkerOptions = {
         center: new google.maps.LatLng(24.8614622, 67.00993879999999),
         zoom: 10,
@@ -7,6 +8,7 @@ $(() => {
             style: google.maps.NavigationControlStyle.SMALL
         }
     };
+    
     const plotMarkerMap = new google.maps.Map(document.getElementById("plotMarkerMapHolder"), plotMarkerOptions);
 
     $('#plotMarker').on('click', () => {

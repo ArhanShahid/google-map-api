@@ -103,6 +103,7 @@ const path = [{
 ];
 
 $(() => {
+
     let map;
 
     const initializePlotMarker = () => {
@@ -116,6 +117,7 @@ $(() => {
         };
         map = new google.maps.Map(document.getElementById("plotMarkerMapHolder"), options);
     }
+
     initializePlotMarker();
 
     $('#plotMarker').on('click', () => {
@@ -128,7 +130,6 @@ $(() => {
     });
 
     const icon = new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/micons/blue.png");
-
 
     const moveMarker = (map, marker, lat, lon) => {
         marker.setPosition(new google.maps.LatLng(lat, lon));

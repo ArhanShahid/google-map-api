@@ -1,4 +1,5 @@
 $(() => {
+  
   let origin = new google.maps.LatLng(39.904211, 116.407394),
     destination = new google.maps.LatLng(40.4167754, -3.703790),
     map = new google.maps.Map(document.getElementById('map-canvas'), {
