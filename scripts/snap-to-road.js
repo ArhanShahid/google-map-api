@@ -1,14 +1,31 @@
 $(() => {
 
+    const drawingManager = new google.maps.drawing.DrawingManager({
+        drawingMode: google.maps.drawing.OverlayType.POLYLINE,
+        drawingControl: true,
+        drawingControlOptions: {
+            position: google.maps.ControlPosition.TOP_CENTER,
+            drawingModes: [
+                google.maps.drawing.OverlayType.POLYLINE
+            ]
+        },
+        polylineOptions: {
+            strokeColor: '#696969',
+            strokeWeight: 2
+        }
+    });
     const directionsService = new google.maps.DirectionsService;
     const directionsDisplay = new google.maps.DirectionsRenderer({
-        polylineOptions: { strokeColor: "red" }
+        polylineOptions: {
+            strokeColor: "red"
+        }
     });
-    const routePlotMap = new google.maps.Map(document.getElementById('route-plot-array-map'), {
+    const map = new google.maps.Map(document.getElementById('snap-to-road-map'), {
         zoom: 13,
         center: new google.maps.LatLng(24.8614622, 67.00993879999999)
     });
 
+  
     const markers = [{
             "lat": 24.8796578,
             "lng": 67.0869286
@@ -700,40 +717,8 @@ $(() => {
         }
     ];
 
+    drawingManager.setMap(map);
+    // runSnapToRoad([]);
 
-    function calculateWayPoints(array) {
-        let waypts = [];
-        if (array.length >= 23) {
-            const r = Math.round(array.length / 22)
-            let s = 0;
-            while (s < (array.length - r)) {
-                s = s + r;
-                waypts.push({ 
-                    location: array[s], stopover: true
-                 })
-            }
-        } else {
-            array.forEach(m => waypts.push({ location: m, stopover: true }));
-            return array
-        }
-    }
-
-    const calculateAndDisplayRoute = (directionsService, directionsDisplay, markers) => {
-        directionsService.route({
-            origin: markers[0],
-            destination: markers[markers.length - 1],
-            waypoints: calculateWayPoints(markers),
-            optimizeWaypoints: false,
-            travelMode: google.maps.TravelMode.DRIVING
-        }, (response, status) => {
-            (status === google.maps.DirectionsStatus.OK) ?
-            directionsDisplay.setDirections(response):
-                console.error('Directions request failed due to ' + status)
-
-        });
-    }
-
-
-    directionsDisplay.setMap(routePlotMap);
-    calculateAndDisplayRoute(directionsService, directionsDisplay, markers);
-})
+    directionsDisplay.setMap(map);
+});
