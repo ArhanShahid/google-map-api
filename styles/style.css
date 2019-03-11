@@ -64,3 +64,13 @@
 code {
     font-family: monospace;
 }
+
+#google-place-ac-service-results {
+    list-style: none;
+    margin-top: 10px; 
+}
+
+#google-place-ac-service-results li {
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 5px 15px;
+}
